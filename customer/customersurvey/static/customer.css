@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nextPreviousButtons {
+   display: flex;
+   justify-content: center
+}
+
+.previous {
+  background-color: #0000FF;
+  color: white;
+}
+
+.next {
+  background-color: #FF0000;
+  color: white;
+}
+

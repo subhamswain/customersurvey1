@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+      <link rel="stylesheet" href="{% static 'customer.css' %}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <style>
+h1{
+   text-align:center;
+}
+h4{
+   text-align:center;
+}
+    body{
+    background-color: yellow;
+    text-align:center;
+    }
+</style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<body>
+
+  <div class="container">
+      <div class="row col-lg-12">
+  <h1>Customer Survey</h1>
+
+          {% if survey_completed %}
+          <span>Thank You for Your Response</span>
+          <a href="save_question/">Go back</a>
+          {% else %}
+<form name="survey_form" action="/save/question/" method="POST">{% csrf_token %}
+<input type="hidden" name="question_id" value="{{question.pk}}{pk}}">
+
+<label> {{question}}</label>
+    <br>
+    {% if last_question %}
+    <input type="text" name="user_answer">
+    <input type="submit" value="submit" name="user_answer">
+    {% else %}
+<input class="my-3" type="range" id="points" name="user_answer" min="0" max="30">
+{% endif %}
+<div class="nextPreviousButtons">
+<button name="previous" class="previous mx-3">&laquo; Previous</button>
+<button name="next" class="next">Next &raquo;</button>
+</div>
+</form>
+          {% endif %}
+</div>
+</div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
+
